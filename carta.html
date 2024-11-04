@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mil sueños y eres mi realidad</title>
+    <link rel="stylesheet" href="estilos/carta.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Recuadro de video a la izquierda -->
+        <div class="video-box">
+            <video src="lady.mp4" autoplay loop muted></video>
+        </div>
+
+        <!-- Carta con 3 páginas -->
+        <div class="card" id="card">
+            <div class="page" id="page-1">
+                <h2>Mil sueños y sigo prefiriendo tu realidad</h2>
+                <p>Gracias por siempre estar junto a mi y estar para mi, aprecio mucho todo el esfuerzo que haces por cuidarme osita, eres una chica muy fuerte haciendo todo lo que haces
+                    admiro eso de ti
+                </p>
+                <div class="button-group">
+                    <button onclick="previousPage(3)">Atrás</button>
+                    <button onclick="nextPage(2)">Siguiente</button>
+                </div>
+            </div>
+            <div class="page" id="page-2">
+                <h2>Muchas caras y me enamoro de la tuya</h2>
+                <p>Sigue haciendolo que con el tiempo triunfaras mi linda niña, estare apoyandote cada que me necesites ahi para ti no te volvere a dejar sola en tus problemas nunca mas cariño</p>
+                <div class="button-group">
+                    <button onclick="previousPage(1)">Atrás</button>
+                    <button onclick="nextPage(3)">Siguiente</button>
+                </div>
+            </div>
+            <div class="page" id="page-3">
+                <h2>Estoy prohibido en el cielo pero tu risa me dio mi propio cielo</h2>
+                <p>Cada que te sientas mal, cada que te enojes con alguien, cada que no te sientas suficiente cuentamelo y te recordare si es necesario mil veces porque eres una superheroina ante mis ojos.</p>
+                <div class="button-group">
+                    <button onclick="previousPage(2)">Atrás</button>
+                    <button onclick="nextPage(1)">Volver al inicio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/carta.js"></script>
+</body>
+</html>

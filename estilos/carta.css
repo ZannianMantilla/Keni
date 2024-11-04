@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes colorChange {
+    0% { background-color: #ff9a9e; }
+    33% { background-color: #ff6f91; }
+    66% { background-color: #fad0c4; }
+    100% { background-color: #ff9a9e; }
+}
+
+.background-animation {
+    animation: colorChange 6s infinite;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para móviles */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    max-width: 100%;
+    padding: 20px; /* Añadido padding para evitar que se pegue a los bordes */
+}
+
+/* Recuadro del video */
+.video-box {
+    width: 100%; /* Cambiado a 100% para responsividad */
+    max-width: 600px; /* Ancho máximo del video */
+    height: auto; /* Cambiado a auto para mantener proporción */
+    aspect-ratio: 16 / 9; /* Asegura que el video mantenga proporciones adecuadas */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Carta con 3 páginas */
+.card {
+    background-color: #fff5f5;
+    border-radius: 10px;
+    width: 100%; /* Cambiado a 100% para responsividad */
+    max-width: 480px; /* Ancho máximo de la carta */
+    height: auto; /* Cambiado a auto para mantener proporción */
+    padding: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.8s ease;
+}
+
+.page {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    color: #ff6f91;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.page.active {
+    display: block;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff6f91;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff8a9d;
+}
+
+/* Estilos para tablets */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .video-box {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+
+    button {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Estilos para teléfonos */
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .video-box {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 400px; /* Asegúrate de que no sea menor de 300px */
+        height: auto;
+        min-height: 300px; /* Añadido para asegurarte de que la carta tenga un tamaño mínimo */
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}
