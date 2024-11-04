@@ -8,7 +8,7 @@ document.getElementById("formulario-acceso").addEventListener("submit", function
         Swal.fire({
             icon: 'success',
             title: '¡Accediste a mi corazón 💖!',
-            text: 'Bienvenido/a, ¡eres muy especial!',
+            text: 'Te amo osita',
             background: '#ffe6e6',
             confirmButtonColor: '#ff6f91',
         }).then(() => {
