@@ -1,0 +1,290 @@
+/* Reinicio básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos generales */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #ffe6e6;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Contenedor inicial */
+  .container {
+    text-align: center;
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  /* Clase para fade out (para la interfaz y la carta) */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+  }
+  
+  /* Caja musical */
+  #music-box {
+    width: 100px;
+    height: 100px;
+    background: #ffcccc;
+    border: 3px solid #ff6666;
+    border-radius: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ff6666;
+    transition: background 0.3s ease;
+  }
+  
+  #music-box:hover {
+    background: #ffb3b3;
+  }
+  
+  /* Título animado */
+  #title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #ff3366;
+    transition: transform 1s ease-out;
+    pointer-events: none;
+  }
+  
+  #title.show {
+    transform: translate(-50%, -200%) scale(1);
+  }
+  
+  /* Responsividad */
+  @media (max-width: 600px) {
+    #music-box {
+      width: 80px;
+      height: 80px;
+      font-size: 1.5rem;
+    }
+    #title {
+      font-size: 2rem;
+    }
+  }
+  
+  /* -------------------------- */
+  /* ESTILOS DE LA CARTA        */
+  /* -------------------------- */
+  
+  .letter {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #fdfdfd;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: none;
+    overflow-y: auto;
+    z-index: 1;
+  }
+  
+  .letter.show {
+    display: block;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Cada página de la carta */
+  .page {
+    background: #fff;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    height: 400px;  /* Altura fija para simular una página */
+    overflow: hidden;
+    position: relative;
+    font-family: 'Times New Roman', serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  /* Cursor parpadeante en la última palabra */
+  .page span:last-child::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 5px;
+  }
+  
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  /* ------------------------------ */
+  /* PALABRAS RESALTADAS CON EFECTO */
+  /* ------------------------------ */
+  
+  .highlight {
+    display: inline-block;
+    background-color: yellow;
+    /* Efecto explosión: inicia en 0, explota y se estabiliza */
+    animation: explosion 0.6s ease-out forwards;
+  }
+  
+  @keyframes explosion {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* ------------------------------ */
+  /* BOTÓN "SIGUIENTE"              */
+  /* ------------------------------ */
+  
+  .next-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .next-button:hover {
+    background-color: #ff3333;
+  }
+  
+  /* ------------------------------ */
+  /* ESTILOS DEL COLLAGE            */
+  /* ------------------------------ */
+  
+  .collage {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #fdfdfd;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in, transform 1s ease-in;
+    z-index: 1;
+    transform: translateY(20px);
+    overflow-y: auto;  /* Ahora es scrolleable verticalmente */
+  }
+  
+  /* Al mostrarse, se hace visible y se desliza hacia su posición */
+  .collage.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Collage en grid con efecto dinámico en las imágenes */
+  .collage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+  }
+  
+  .collage-grid img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: imageFadeIn 0.8s forwards;
+  }
+  
+  .collage-grid img:nth-child(1) { animation-delay: 0.2s; }
+  .collage-grid img:nth-child(2) { animation-delay: 0.4s; }
+  .collage-grid img:nth-child(3) { animation-delay: 0.6s; }
+  .collage-grid img:nth-child(4) { animation-delay: 0.8s; }
+  .collage-grid img:nth-child(5) { animation-delay: 1s; }
+  .collage-grid img:nth-child(6) { animation-delay: 1.2s; }
+  .collage-grid img:nth-child(7) { animation-delay: 1.4s; }
+  
+  @keyframes imageFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* ------------------------------ */
+  /* ESTILOS DEL MODAL (ZOOM)       */
+  /* ------------------------------ */
+  
+  .modal {
+    display: none; /* Oculto inicialmente */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeInModal 0.5s ease;
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    animation: zoomIn 0.5s;
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  @keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes zoomIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+  

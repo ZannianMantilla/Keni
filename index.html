@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regalo de San Valentín</title>
+  <!-- Vinculamos el CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Importamos una tipografía elegante -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Interfaz inicial -->
+  <div class="container">
+    <!-- Caja musical (clickeable) -->
+    <div id="music-box">♫</div>
+    <!-- Título animado -->
+    <h1 id="title">limon y sal</h1>
+    <!-- Audio (asegúrate de tener "limon.mp3" en la ruta correcta) -->
+    <audio id="audio" src="limon.mp3"></audio>
+  </div>
+  
+  <!-- Contenedor de la carta con efecto typewriter -->
+  <div id="letter" class="letter"></div>
+  
+  <!-- Contenedor del collage (inicialmente oculto) -->
+  <div id="collage" class="collage"></div>
+  
+  <!-- Modal para zoom (Lightbox) -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" alt="Zoom de imagen">
+  </div>
+  
+  <!-- Vinculamos el JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
