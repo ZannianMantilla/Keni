@@ -72,6 +72,14 @@
     transform: translate(-50%, -200%) scale(1);
   }
   
+
+  @media (max-width: 600px) {
+    .next-button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
+  
   /* Responsividad */
   @media (max-width: 600px) {
     #music-box {
@@ -170,8 +178,8 @@
   /* ------------------------------ */
   
   .next-button {
-    display: inline-block;
-    margin-top: 20px;
+    display: block;            /* Asegura que ocupe toda la línea */
+    margin: 20px auto;         /* Centrado horizontal y margen superior/inferior */
     padding: 10px 20px;
     background-color: #ff6666;
     color: #fff;
@@ -180,7 +188,10 @@
     font-size: 1.2rem;
     cursor: pointer;
     transition: background 0.3s ease;
+    max-width: 90%;            /* Evita que se extienda más allá de un 90% del contenedor */
+    box-sizing: border-box;
   }
+  
   
   .next-button:hover {
     background-color: #ff3333;
